@@ -9,7 +9,7 @@ const User = require(path.join(rootdir, 'models', 'user'));
 
 exports.getUsers = async(req, res, next) => {
     try {
-        const users = await User.find().select('-password -secret');
+        const users = await User.find().select('-type -password -secret');
         res.status(200).json({users: users});
 
     } catch(err) {
@@ -24,7 +24,7 @@ exports.getUser = async(req, res, next) => {
     const userId = req.params.userId;
 
     try {
-        const user = await User.findOne({_id: userId}).select('-password -secret');
+        const user = await User.findOne({_id: userId}).select(' -type-password -secret');
         if(!user) {
             const error = new Error('User not Found');
             error.statusCode = 404;

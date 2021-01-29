@@ -13,6 +13,7 @@ const app = express();
 // Express Middlewares
 app.use(cookieParser());
 app.use(express.static(path.join('public')));
+app.use('/public', express.static(path.join('public')));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 

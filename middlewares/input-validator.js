@@ -33,7 +33,7 @@ exports.validate = (method) => {
         case 'post': {
             return [
                 body('title', 'Post Title must be Alphanumeric And between 1-30 Characters').exists().trim().isAlphanumeric().isLength({min: 1, max: 30}),
-                body('title', 'Post Title must be between 1-1000 Characters').exists().trim().isLength({min: 1, max: 1000}),
+                body('content', 'Post Content must be between 1-1000 Characters').exists().trim().isLength({min: 1, max: 1000}),
             ]
         }
     }

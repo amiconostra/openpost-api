@@ -8,6 +8,8 @@ function Uploader(req, res, next) {
         destination: (req, file, cb) => {
             if(file.fieldname == 'avatar') {
                 cb(null, 'public/assets/avatars');
+            } else if(file.fieldname == 'image') {
+                cb(null, 'public/assets/posts');
             } else {
                 cb(null, 'public/assets/images');
             }

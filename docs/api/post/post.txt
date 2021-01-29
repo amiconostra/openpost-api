@@ -1,0 +1,55 @@
+Get Posts:
+	/api/posts
+	method: GET,
+    headers: Authorization -> JWT Token
+	Res: 200 {posts}
+
+Get Post:
+	/api/posts/{POST_ID}
+	method: GET,
+    headers: Authorization -> JWT Token
+	Res: 200 {post}
+
+Get Post Title:
+	/api/posts/{POST_ID}/title
+	method: GET,
+    headers: Authorization -> JWT Token
+	Res: 200 {title}
+
+Get Post Content:
+	/api/posts/{POST_ID}/content
+	method: GET,
+    headers: Authorization -> JWT Token
+	Res: 200 {content}
+
+Get Post Image Url:
+	/api/posts/{POST_ID}/image
+	method: GET,
+    headers: Authorization -> JWT Token
+	Res: 200 {image}
+
+Get Post User:
+	/api/posts/{POST_ID}/user
+	method: GET,
+    headers: Authorization -> JWT Token
+	Res: 200 {user}
+
+Create Post:
+    /api/posts/new
+	method: POST,
+    headers: Authorization -> JWT Token
+	body: title, content, image
+    Res: 201 {post}
+
+Update Post:
+    /api/posts/{POST_ID}
+	method: PUT,
+    headers: Authorization -> JWT Token
+	body: title, content, image
+    Res: 200 {post}
+
+Delete Post:
+    /api/posts/{POST_ID}
+	method: DELETE,
+    headers: Authorization -> JWT Token
+    Res: 200
