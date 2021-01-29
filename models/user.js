@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const path = require('path');
 
-const defaultAvatarUrl = path.join('public', 'assets', 'avatars', 'default-avatar.png');
+const defaultAvatarUrl = path.join('public', 'assets', 'avatars', 'default-avatar.png').replace(/\\/g, '/');
 
 const userSchema = new mongoose.Schema({
     type: {
@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         default: defaultAvatarUrl
     },
-    privateToken: {
+    secret: {
         type: String,
         required: true,
     }

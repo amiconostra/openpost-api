@@ -7,8 +7,8 @@ const authController = require('./controller');
 
 const router = express.Router();
 
-router.post('/register', inputValidator.validate('register'), authController.postRegister);
+router.post('/auth/register', inputValidator.validate('register'), authController.postRegister);
 
-router.post('/login', inputValidator.validate('login'), authController.postLogin);
+router.post('/auth/login', inputValidator.validate('login'), authController.postLogin);
 
 module.exports = router;

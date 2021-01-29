@@ -22,7 +22,7 @@ exports.postRegister = (req, res, next) => {
 
     crypto.randomBytes(16, async(err, buffer) => {
         if(err) {
-            const error = new Error('Failed to Generate Verification Token');
+            const error = new Error('Failed to Generate Secret Token');
             error.statusCode = 500;
             return next(error);;
         }
@@ -38,10 +38,10 @@ exports.postRegister = (req, res, next) => {
             }
 
             const hashedPassword = await bcrypt.hash(password, 12);
-            const newUser = new User({username: username, password: hashedPassword, privateToken: token});
+            const newUser = new User({username: username, password: hashedPassword, secret: token});
             await newUser.save();
 
-            res.status(201).json({message: 'User successfully registered!', privateToken: token});
+            res.status(201).json({message: 'User successfully registered!', secret: token});
 
         } catch(err) {
             if(!err.statusCode) {

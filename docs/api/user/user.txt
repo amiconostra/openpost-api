@@ -1,0 +1,42 @@
+Get Users:
+	/api/users
+	method: GET,
+    headers: Authorization -> JWT Token
+	Res: 200 {users}
+
+Get User:
+	/api/users/{USER_ID}
+	method: GET,
+    headers: Authorization -> JWT Token
+	Res: 200 {users}
+
+Get Username:
+	/api/users/{USER_ID}/username
+	method: GET,
+    headers: Authorization -> JWT Token
+	Res: 200 {username}
+
+Get User Status:
+	/api/users/{USER_ID}/status
+	method: GET,
+    headers: Authorization -> JWT Token
+	Res: 200 {status}
+
+Get User Avatar Url:
+	/api/users/{USER_ID}/avatar
+	method: GET,
+    headers: Authorization -> JWT Token
+	Res: 200 {avatar}
+
+Get User Secret:
+	/api/users/{USER_ID}/secret
+	method: GET,
+    headers: Authorization -> JWT Token
+	Res: 200 {secret}
+
+Reset Password:
+	/api/users/{USER_ID}/password
+	method: POST,
+	body: password, secret
+    Res: 200 {secret}
+    Extra: Send the new password as "password" AND user's secret token as "secret". Responses with a newly generated secret token.

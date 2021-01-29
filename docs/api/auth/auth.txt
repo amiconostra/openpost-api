@@ -2,10 +2,10 @@ Register:
 	/api/register
 	method: POST,
 	Body: username, password
-	Res: 201 {privateToken}
+	Res: 201 {secret}
 
 Login:
 	/api/login
 	method: POST,
-	Body: email, password
+	Body: username, password
 	Res: 200 {token}
