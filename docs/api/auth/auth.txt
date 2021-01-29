@@ -1,0 +1,11 @@
+Register:
+	/api/register
+	method: POST,
+	Body: username, password
+	Res: 201 {privateToken}
+
+Login:
+	/api/login
+	method: POST,
+	Body: email, password
+	Res: 200 {token}
