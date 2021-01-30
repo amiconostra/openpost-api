@@ -34,6 +34,12 @@ Get User Secret:
     headers: Authorization -> JWT Token
 	Res: 200 {secret}
 
+Get Posts:
+	/api/users/{USER_ID}/posts
+	method: GET,
+    headers: Authorization -> JWT Token
+	Res: 200 {posts}
+
 Reset Password:
 	/api/users/{USER_ID}/password
 	method: POST,

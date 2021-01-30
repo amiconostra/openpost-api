@@ -6,6 +6,7 @@ const { validationResult } = require('express-validator');
 
 // Models
 const User = require(path.join(rootdir, 'models', 'user'));
+const Post = require(path.join(rootdir, 'models', 'post'));
 
 exports.getUsers = async(req, res, next) => {
     try {
@@ -124,6 +125,21 @@ exports.getUserSecret = async(req, res, next) => {
         }
         
         res.status(200).json({secret: user.secret});
+
+    } catch(err) {
+        if(!err.statusCode) {
+            err.statusCode = 500;
+        }
+        return next(err);
+    }
+};
+
+exports.getUserPosts = async(req, res, next) => {
+    const userId = req.params.userId;
+
+    try {
+        const posts = await Post.find({userId: userId}).sort({createdAt: -1});
+        res.status(200).json({posts: posts});
 
     } catch(err) {
         if(!err.statusCode) {

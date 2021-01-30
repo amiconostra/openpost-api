@@ -20,6 +20,8 @@ router.get('/users/:userId/avatar', isAuth, userController.getUserAvatar);
 
 router.get('/users/:userId/secret', isAuth, userController.getUserSecret);
 
+router.get('/users/:userId/posts', isAuth, userController.getUserPosts);
+
 router.post('/users/:userId/password', inputValidator.validate('password'), userController.postUserPassword);
 
 module.exports = router;
