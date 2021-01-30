@@ -9,16 +9,16 @@ const jwt = require('jsonwebtoken');
 const User = require(path.join(rootdir, 'models', 'user'));
 
 exports.postRegister = (req, res, next) => {
-    const username = req.body.username;
-    const password = req.body.password;
     const errors = validationResult(req);
-
     if(!errors.isEmpty()) {
         const error = new Error('Validation Failed');
         error.statusCode = 422;
         error.errors = errors.array();
         throw error;
     }
+
+    const username = req.body.username.toLowerCase();
+    const password = req.body.password;
 
     crypto.randomBytes(16, async(err, buffer) => {
         if(err) {
@@ -53,16 +53,16 @@ exports.postRegister = (req, res, next) => {
 };
 
 exports.postLogin = async(req, res, next) => {
-    const username = req.body.username;
-    const password = req.body.password;
     const errors = validationResult(req);
-
     if(!errors.isEmpty()) {
         const error = new Error('Validation Failed');
         error.statusCode = 422;
         error.errors = errors.array();
         return next(error);;
     }
+
+    const username = req.body.username.toLowerCase();
+    const password = req.body.password;
 
     try { 
         const user = await User.findOne({username: username});
